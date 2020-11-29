@@ -8,21 +8,16 @@ import com.samoilovich.courseapp.databinding.ItemActorBinding
 
 class CastAdapter(var actors: List<Actor>) : RecyclerView.Adapter<CastAdapter.ActorViewHolder>() {
 
-    private var actorNamePlaceholder: String? = null
-
     inner class ActorViewHolder(private val binding: ItemActorBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(actor: Actor) {
             binding.actorAvatar.setImageResource(actor.avatar)
-            binding.actorName.text = actorNamePlaceholder?.format(actor.firstName, actor.secondName)
+            binding.actorName.text = actor.name
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorViewHolder {
-        if (actorNamePlaceholder == null) {
-            actorNamePlaceholder = parent.context.getString(R.string.actor_name_placeholder)
-        }
         return ActorViewHolder(ItemActorBinding.inflate(LayoutInflater.from(parent.context)))
     }
 

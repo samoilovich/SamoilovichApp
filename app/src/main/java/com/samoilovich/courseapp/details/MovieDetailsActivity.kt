@@ -45,10 +45,10 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private fun getActors(): List<Actor> {
         val actors = mutableListOf<Actor>()
-        actors.add(Actor("Robert", "Downey Jr.", R.drawable.avatar_robert))
-        actors.add(Actor("Chris", "Evans", R.drawable.avatar_chris))
-        actors.add(Actor("Mark", "Ruffalo", R.drawable.avatar_mark))
-        actors.add(Actor("Chris", "Hemsworth", R.drawable.avatar_chris_thor))
+        actors.add(Actor("Robert Downey Jr.", R.drawable.avatar_robert))
+        actors.add(Actor("Chris Evans", R.drawable.avatar_chris))
+        actors.add(Actor("Mark Ruffalo", R.drawable.avatar_mark))
+        actors.add(Actor("Chris Hemsworth", R.drawable.avatar_chris_thor))
         return actors
     }
 

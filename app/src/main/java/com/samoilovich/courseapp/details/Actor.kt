@@ -1,7 +1,6 @@
 package com.samoilovich.courseapp.details
 
 class Actor(
-    val firstName: String,
-    val secondName: String,
+    val name: String,
     val avatar: Int
 )
