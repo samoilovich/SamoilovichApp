@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">CourseApplication</string>
+
+    <!-- Movie details screen -->
+    <string name="back">Back</string>
+    <string name="avengers">Avengers:\nEnd Game</string>
+    <string name="tags">Action, Adventure, Fantasy</string>
+    <string name="age">13+</string>
+    <string name="reviews">125 Reviews</string>
+    <string name="storyline">Storyline</string>
+    <string name="storyline_text">After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos\' actions and restore balance to the universe.</string>
+    <string name="cast">Cast</string>
+    <string name="actor_name_placeholder">%s\n%s</string>
 </resources>
