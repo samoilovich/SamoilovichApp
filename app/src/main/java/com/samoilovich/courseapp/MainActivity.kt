@@ -1,21 +1,40 @@
 package com.samoilovich.courseapp
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.widget.AppCompatButton
-import com.samoilovich.courseapp.details.MovieDetailsActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.samoilovich.courseapp.databinding.ActivityMainBinding
+import com.samoilovich.courseapp.models.Movie
+import com.samoilovich.courseapp.ui.movie.details.MovieDetailsFragment
+import com.samoilovich.courseapp.ui.movie.list.MoviesLisFragment
+import com.samoilovich.courseapp.ui.movie.list.OnMovieClickListener
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        prepareViews()
+class MainActivity : AppCompatActivity(), OnMovieClickListener {
+
+    companion object {
+        const val MOVIE_DETAILS_TAG = "MOVIE_DETAILS_TAG"
     }
 
-    private fun prepareViews() {
-        findViewById<AppCompatButton>(R.id.start_movie_details_button)?.setOnClickListener {
-            startActivity(Intent(this, MovieDetailsActivity::class.java))
+    private lateinit var binding: ActivityMainBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        prepareViews(savedInstanceState)
+    }
+
+    private fun prepareViews(savedInstanceState: Bundle?) {
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fragment_container, MoviesLisFragment())
+                .commit()
         }
+    }
+
+    override fun onMovieClick(movie: Movie) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, MovieDetailsFragment.newInstance(movie))
+            .addToBackStack(MOVIE_DETAILS_TAG)
+            .commit()
     }
 }

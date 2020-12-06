@@ -1,10 +1,10 @@
-package com.samoilovich.courseapp.details
+package com.samoilovich.courseapp.ui.movie.details
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.samoilovich.courseapp.R
 import com.samoilovich.courseapp.databinding.ItemActorBinding
+import com.samoilovich.courseapp.models.Actor
 
 class CastAdapter(var actors: List<Actor>) : RecyclerView.Adapter<CastAdapter.ActorViewHolder>() {
 

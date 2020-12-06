@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">CourseApplication</string>
 
+    <!-- Movies list screen -->
+    <string name="movies_list">Movies list</string>
+
     <!-- Movie details screen -->
     <string name="back">Back</string>
     <string name="avengers">Avengers:\nEnd Game</string>
@@ -11,4 +14,8 @@
     <string name="storyline_text">After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos\' actions and restore balance to the universe.</string>
     <string name="cast">Cast</string>
     <string name="actor_name_placeholder">%s\n%s</string>
+
+    <string name="review_placeholder">%d review</string>
+    <string name="reviews_placeholder">%d reviews</string>
+    <string name="duration_placeholder">%d min</string>
 </resources>

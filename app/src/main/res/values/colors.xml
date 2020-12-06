@@ -12,4 +12,9 @@
     <color name="grayCe">#ECECEC</color>
     <color name="grayD8">#D8D8D8</color>
     <color name="pink">#FF3466</color>
+
+    <color name="movieBgStartColor">#404056</color>
+    <color name="movieBgEndColor">#222232</color>
+    <color name="strokeColor">#636375</color>
+    <color name="movieDurationTextColor">#565665</color>
 </resources>
