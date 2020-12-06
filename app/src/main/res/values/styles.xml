@@ -7,4 +7,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ImageRoundCorners" parent="ShapeAppearanceOverlay">
+        <item name="cornerSize">@dimen/cornersRadius</item>
+    </style>
+
+    <style name="MoviePosterRoundCorners" parent="ShapeAppearanceOverlay">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">6dp</item>
+    </style>
 </resources>
