@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.samoilovich.courseapp.R
 import com.samoilovich.courseapp.databinding.ItemMovieBinding
-import com.samoilovich.courseapp.models.Movie
+import com.samoilovich.courseapp.data.Movie
 
 class MoviesAdapter(
     var movies: List<Movie>,

@@ -1,6 +1,6 @@
 package com.samoilovich.courseapp.ui.movie.list
 
-import com.samoilovich.courseapp.models.Movie
+import com.samoilovich.courseapp.data.Movie
 
 interface OnMovieClickListener {
 

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.samoilovich.courseapp.R
 import com.samoilovich.courseapp.databinding.FragmentMoviesDetailsBinding
 import com.samoilovich.courseapp.ext.addHorizontalDivider
-import com.samoilovich.courseapp.models.Movie
+import com.samoilovich.courseapp.data.Movie
 
 class MovieDetailsFragment : Fragment() {
 

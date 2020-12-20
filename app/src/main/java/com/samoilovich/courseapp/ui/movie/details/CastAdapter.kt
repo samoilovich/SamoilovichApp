@@ -3,8 +3,9 @@ package com.samoilovich.courseapp.ui.movie.details
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.samoilovich.courseapp.data.Actor
 import com.samoilovich.courseapp.databinding.ItemActorBinding
-import com.samoilovich.courseapp.models.Actor
 
 class CastAdapter(var actors: List<Actor>) : RecyclerView.Adapter<CastAdapter.ActorViewHolder>() {
 
@@ -12,7 +13,10 @@ class CastAdapter(var actors: List<Actor>) : RecyclerView.Adapter<CastAdapter.Ac
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(actor: Actor) {
-            binding.actorAvatar.setImageResource(actor.avatar)
+            Glide.with(binding.actorAvatar)
+                .load(actor.picture)
+                .centerCrop()
+                .into(binding.actorAvatar)
             binding.actorName.text = actor.name
         }
     }

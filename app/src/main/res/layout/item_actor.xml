@@ -8,12 +8,11 @@
         android:id="@+id/actor_avatar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:src="@drawable/avatar_chris"
-        app:cardCornerRadius="4dp"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/AvatarRoundCorners" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/actor_name"

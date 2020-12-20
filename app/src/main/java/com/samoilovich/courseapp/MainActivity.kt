@@ -3,7 +3,7 @@ package com.samoilovich.courseapp
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.samoilovich.courseapp.databinding.ActivityMainBinding
-import com.samoilovich.courseapp.models.Movie
+import com.samoilovich.courseapp.data.Movie
 import com.samoilovich.courseapp.ui.movie.details.MovieDetailsFragment
 import com.samoilovich.courseapp.ui.movie.list.MoviesLisFragment
 import com.samoilovich.courseapp.ui.movie.list.OnMovieClickListener
