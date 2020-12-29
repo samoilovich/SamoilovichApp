@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
 import com.samoilovich.courseapp.R
+import com.samoilovich.courseapp.data.Movie
 import com.samoilovich.courseapp.databinding.FragmentMoviesDetailsBinding
 import com.samoilovich.courseapp.ext.addHorizontalDivider
-import com.samoilovich.courseapp.data.Movie
 
 class MovieDetailsFragment : Fragment() {
 
@@ -56,23 +57,28 @@ class MovieDetailsFragment : Fragment() {
 
     private fun prepareMovieInfo() {
         movie?.let { movieInfo ->
-            binding.imMoviePoster.setImageResource(movieInfo.poster)
-            binding.tvMovieName.text = movieInfo.name
-            binding.tvMovieAgeLimit.text = movieInfo.ageLimit
-            binding.tvMovieGenres.text = movieInfo.genres
+            Glide.with(binding.imMoviePoster)
+                .load(movieInfo.backdropPath)
+                .centerCrop()
+                .into(binding.imMoviePoster)
+            binding.tvMovieName.text = movieInfo.title
+            binding.tvMovieAgeLimit.text = movieInfo.getAgeLimit(requireContext())
+            // todo
+//            binding.tvMovieGenres.text = movieInfo.genres
         }
     }
 
     private fun prepareRating() {
         movie?.let { movieInfo ->
-            binding.movieRating.setRatingAndReviews(movieInfo.rating, movieInfo.reviews)
+            binding.movieRating.setRatingAndReviews(movieInfo.getRating(), movieInfo.voteCount)
         }
     }
 
     private fun prepareCast() {
         binding.movieActors.apply {
             layoutManager = GridLayoutManager(context, 4)
-            adapter = CastAdapter(movie?.actors ?: listOf())
+            // todo add getting actors list
+//            adapter = CastAdapter(movie?.actors ?: listOf())
             addHorizontalDivider(R.drawable.divider)
         }
     }

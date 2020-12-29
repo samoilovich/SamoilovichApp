@@ -18,4 +18,7 @@
     <string name="review_placeholder">%d review</string>
     <string name="reviews_placeholder">%d reviews</string>
     <string name="duration_placeholder">%d min</string>
+
+    <string name="adult_age_limit">18+</string>
+    <string name="no_age_limit">0+</string>
 </resources>
