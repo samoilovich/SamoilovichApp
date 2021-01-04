@@ -24,8 +24,7 @@ class MoviesAdapter(
                 .centerCrop()
                 .into(binding.imMoviePoster)
             binding.tvMovieAgeLimit.text = movie.getAgeLimit(binding.tvMovieAgeLimit.context)
-            // todo add logic to get genres
-//            binding.tvMovieGenres.text = movie.genres
+            binding.tvMovieGenres.text = movie.getGenreNames()
             binding.rvMovieRating.setRatingAndReviews(movie.getRating(), movie.voteCount)
             binding.tvMovieDuration.text =
                 binding.root.context.getString(R.string.duration_placeholder).format(movie.runtime)

@@ -27,7 +27,9 @@ data class Movie(
     @SerializedName("overview") var overview: String,
     @SerializedName("release_date") var releaseDate: String,
 
-    var isFavorite: Boolean = false
+    var isFavorite: Boolean = false,
+    var genres: List<Genre> = listOf(),
+    var actorList: List<Actor> = listOf()
 ) : Parcelable {
 
     fun getAgeLimit(context: Context): String {
@@ -39,4 +41,15 @@ data class Movie(
     }
 
     fun getRating(): Int = (voteAverage / 2).toInt()
+
+    fun getGenreNames(): String {
+        val nameBuilder = StringBuilder()
+        if (genres.size > 1) {
+            for (index in 0..genres.size - 2) {
+                nameBuilder.append(genres[index].name).append(", ")
+            }
+        }
+        nameBuilder.append(genres.last().name)
+        return nameBuilder.toString()
+    }
 }

@@ -59,12 +59,11 @@ class MovieDetailsFragment : Fragment() {
         movie?.let { movieInfo ->
             Glide.with(binding.imMoviePoster)
                 .load(movieInfo.backdropPath)
-                .centerCrop()
+//                .centerCrop()
                 .into(binding.imMoviePoster)
             binding.tvMovieName.text = movieInfo.title
             binding.tvMovieAgeLimit.text = movieInfo.getAgeLimit(requireContext())
-            // todo
-//            binding.tvMovieGenres.text = movieInfo.genres
+            binding.tvMovieGenres.text = movieInfo.getGenreNames()
         }
     }
 
@@ -77,8 +76,7 @@ class MovieDetailsFragment : Fragment() {
     private fun prepareCast() {
         binding.movieActors.apply {
             layoutManager = GridLayoutManager(context, 4)
-            // todo add getting actors list
-//            adapter = CastAdapter(movie?.actors ?: listOf())
+            adapter = CastAdapter(movie?.actorList ?: listOf())
             addHorizontalDivider(R.drawable.divider)
         }
     }

@@ -14,7 +14,7 @@ class CastAdapter(var actors: List<Actor>) : RecyclerView.Adapter<CastAdapter.Ac
 
         fun bind(actor: Actor) {
             Glide.with(binding.actorAvatar)
-                .load(actor.picture)
+                .load(actor.profilePath)
                 .centerCrop()
                 .into(binding.actorAvatar)
             binding.actorName.text = actor.name
