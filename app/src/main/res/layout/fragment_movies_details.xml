@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimary"
+    android:fillViewport="true"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/defaultPadding">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/im_movie_poster"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bg_movie_poster"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_gradient_poster"
+            app:layout_constraintBottom_toBottomOf="@+id/im_movie_poster"
+            app:layout_constraintEnd_toEndOf="@+id/im_movie_poster"
+            app:layout_constraintStart_toStartOf="@+id/im_movie_poster"
+            app:layout_constraintTop_toTopOf="@+id/im_movie_poster" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/movie_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="48dp"
+            android:drawableStart="@drawable/ic_back"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/roboto_light"
+            android:padding="8dp"
+            android:text="@string/back"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_movie_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultPadding"
+            android:layout_marginEnd="@dimen/defaultPadding"
+            android:fontFamily="@font/roboto_black"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="-5dp"
+            android:text="@string/avengers"
+            android:textColor="@color/grayCe"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="@+id/im_movie_poster"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/im_movie_poster" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_movie_age_limit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultPadding"
+            android:layout_marginEnd="@dimen/defaultPadding"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/ic_rectangle"
+            android:fontFamily="@font/roboto_black"
+            android:padding="4dp"
+            tools:text="@string/age"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_movie_name"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_movie_genres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultPadding"
+            android:layout_marginTop="@dimen/extraSmallPadding"
+            android:layout_marginEnd="@dimen/defaultPadding"
+            android:fontFamily="@font/roboto_light"
+            android:includeFontPadding="false"
+            android:text="@string/tags"
+            android:textColor="@color/pink"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_movie_name"
+            app:layout_constraintStart_toStartOf="@+id/tv_movie_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_movie_name" />
+
+        <com.samoilovich.courseapp.ui.view.RatingView
+            android:id="@+id/movie_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="14dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="@dimen/smallPadding"
+            app:reviewTextSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_movie_genres" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/movie_storyline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultPadding"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="@dimen/defaultPadding"
+            android:fontFamily="@font/roboto_black"
+            android:text="@string/storyline"
+            android:textColor="@color/grayCe"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/movie_rating" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/movie_storyline_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultPadding"
+            android:layout_marginTop="@dimen/defaultPadding"
+            android:layout_marginEnd="@dimen/defaultPadding"
+            android:fontFamily="@font/roboto_light"
+            android:lineSpacingExtra="5dp"
+            android:text="@string/storyline_text"
+            android:textColor="@color/whiteAlphaBf"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/movie_storyline" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/movie_cast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultPadding"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="@dimen/defaultPadding"
+            android:fontFamily="@font/roboto_black"
+            android:text="@string/cast"
+            android:textColor="@color/grayCe"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/movie_storyline_text" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/movie_actors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultPadding"
+            android:layout_marginTop="@dimen/smallPadding"
+            android:layout_marginEnd="@dimen/defaultPadding"
+            android:clipToPadding="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/movie_cast" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

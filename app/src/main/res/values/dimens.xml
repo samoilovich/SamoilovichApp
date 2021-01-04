@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="extraSmallPadding">4dp</dimen>
+    <dimen name="smallPadding">8dp</dimen>
+    <dimen name="defaultPadding">16dp</dimen>
+    <dimen name="largePadding">32dp</dimen>
+
+    <dimen name="cornersRadius">8dp</dimen>
+    <dimen name="posterMargin">2dp</dimen>
+
+    <dimen name="dividerLargeSize">15dp</dimen>
+</resources>
