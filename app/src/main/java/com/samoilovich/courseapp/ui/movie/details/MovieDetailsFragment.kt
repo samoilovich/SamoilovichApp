@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.samoilovich.courseapp.R
@@ -27,6 +28,8 @@ class MovieDetailsFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentMoviesDetailsBinding
+    private val viewModel: MoviesDetailsViewModel by viewModels()
+    private var castAdapter: CastAdapter? = null
     private var movie: Movie? = null
 
     override fun onCreateView(
@@ -46,6 +49,12 @@ class MovieDetailsFragment : Fragment() {
 
     private fun initVariables() {
         movie = arguments?.getParcelable(MOVIE_KEY)
+        viewModel.actorsLiveData.observe(viewLifecycleOwner) { actors ->
+            movie?.actorList = actors
+            castAdapter?.updateActors(actors)
+
+        }
+        viewModel.getMovieActors(context?.assets, movie?.actorIds)
     }
 
     private fun prepareViews() {
@@ -59,7 +68,6 @@ class MovieDetailsFragment : Fragment() {
         movie?.let { movieInfo ->
             Glide.with(binding.imMoviePoster)
                 .load(movieInfo.backdropPath)
-//                .centerCrop()
                 .into(binding.imMoviePoster)
             binding.tvMovieName.text = movieInfo.title
             binding.tvMovieAgeLimit.text = movieInfo.getAgeLimit(requireContext())
@@ -74,9 +82,10 @@ class MovieDetailsFragment : Fragment() {
     }
 
     private fun prepareCast() {
+        castAdapter = CastAdapter(movie?.actorList ?: listOf())
         binding.movieActors.apply {
             layoutManager = GridLayoutManager(context, 4)
-            adapter = CastAdapter(movie?.actorList ?: listOf())
+            adapter = castAdapter
             addHorizontalDivider(R.drawable.divider)
         }
     }

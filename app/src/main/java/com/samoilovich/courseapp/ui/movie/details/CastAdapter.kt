@@ -30,4 +30,9 @@ class CastAdapter(var actors: List<Actor>) : RecyclerView.Adapter<CastAdapter.Ac
     }
 
     override fun getItemCount(): Int = actors.size
+
+    fun updateActors(newActors: List<Actor>) {
+        actors = newActors
+        notifyDataSetChanged()
+    }
 }
