@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -52,7 +53,7 @@ class MovieDetailsFragment : Fragment() {
         viewModel.actorsLiveData.observe(viewLifecycleOwner) { actors ->
             movie?.actorList = actors
             castAdapter?.updateActors(actors)
-
+            binding.movieCast.isVisible = actors.isNotEmpty()
         }
         viewModel.getMovieActors(context?.assets, movie?.actorIds)
     }
@@ -72,6 +73,7 @@ class MovieDetailsFragment : Fragment() {
             binding.tvMovieName.text = movieInfo.title
             binding.tvMovieAgeLimit.text = movieInfo.getAgeLimit(requireContext())
             binding.tvMovieGenres.text = movieInfo.getGenreNames()
+            binding.movieStorylineText.text = movieInfo.overview
         }
     }
 
