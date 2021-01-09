@@ -130,7 +130,7 @@
             android:layout_marginEnd="@dimen/defaultPadding"
             android:fontFamily="@font/roboto_light"
             android:lineSpacingExtra="5dp"
-            android:text="@string/storyline_text"
+            android:text="@string/storyline"
             android:textColor="@color/whiteAlphaBf"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
