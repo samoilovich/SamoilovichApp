@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/transparent">
+    android:background="@android:color/transparent">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
         android:paddingTop="6dp"
         android:paddingEnd="4dp"
         android:paddingBottom="6dp"
-        android:textColor="@color/white"
+        android:textColor="@android:color/white"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/im_movie_poster"
         app:layout_constraintTop_toTopOf="@+id/im_movie_poster"
@@ -135,7 +135,7 @@
         android:layout_marginEnd="@dimen/smallPadding"
         android:layout_marginBottom="2dp"
         android:fontFamily="@font/roboto_black"
-        android:textColor="@color/white"
+        android:textColor="@android:color/white"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_movie_duration"
         app:layout_constraintEnd_toEndOf="parent"

@@ -16,7 +16,7 @@
         android:drawablePadding="8dp"
         android:fontFamily="@font/roboto_black"
         android:text="@string/movies_list"
-        android:textColor="@color/white"
+        android:textColor="@android:color/white"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

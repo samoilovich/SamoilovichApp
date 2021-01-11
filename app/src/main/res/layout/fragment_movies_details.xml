@@ -76,7 +76,7 @@
             android:fontFamily="@font/roboto_black"
             android:padding="4dp"
             tools:text="@string/age"
-            android:textColor="@color/white"
+            android:textColor="@android:color/white"
             android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_movie_name"
             app:layout_constraintStart_toStartOf="parent" />
