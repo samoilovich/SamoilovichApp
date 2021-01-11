@@ -13,10 +13,7 @@ fun RecyclerView.addVerticalDivider(dividerLayoutId: Int) {
 }
 
 fun RecyclerView.addDivider(dividerLayoutId: Int, orientation: Int) {
-    val drawable = ContextCompat.getDrawable(context, dividerLayoutId)
     val decorator = DividerItemDecoration(context, orientation)
-    drawable?.let {
-        decorator.setDrawable(drawable)
-    }
+    ContextCompat.getDrawable(context, dividerLayoutId)?.also(decorator::setDrawable)
     addItemDecoration(decorator)
 }
