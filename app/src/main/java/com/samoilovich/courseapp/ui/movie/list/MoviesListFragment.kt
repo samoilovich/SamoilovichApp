@@ -14,6 +14,10 @@ import com.samoilovich.courseapp.ext.addVerticalDivider
 
 class MoviesLisFragment : Fragment() {
 
+    companion object {
+        private const val COLUMNS_AMOUNT = 2
+    }
+
     private lateinit var binding: FragmentMoviesListBinding
     private val viewModel: MoviesViewModel by viewModels()
     private var moviesAdapter: MoviesAdapter? = null
@@ -39,7 +43,7 @@ class MoviesLisFragment : Fragment() {
             if (activityRef is OnMovieClickListener) activityRef else null
         moviesAdapter = MoviesAdapter(onMovieClickListener)
         binding.rvMoviesList.apply {
-            layoutManager = GridLayoutManager(requireContext(), 2)
+            layoutManager = GridLayoutManager(requireContext(), COLUMNS_AMOUNT)
             adapter = moviesAdapter
             addHorizontalDivider(R.drawable.divider_large)
             addVerticalDivider(R.drawable.divider_large)
@@ -47,7 +51,7 @@ class MoviesLisFragment : Fragment() {
     }
 
     private fun initVariables() {
-        viewModel.moviesLiveData.observe(viewLifecycleOwner) {movies ->
+        viewModel.moviesLiveData.observe(viewLifecycleOwner) { movies ->
             moviesAdapter?.submitList(movies)
         }
         viewModel.getMovies(context?.assets)

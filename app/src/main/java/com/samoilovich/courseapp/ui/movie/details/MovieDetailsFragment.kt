@@ -17,6 +17,7 @@ import com.samoilovich.courseapp.ext.addHorizontalDivider
 class MovieDetailsFragment : Fragment() {
 
     companion object {
+        private const val COLUMNS_AMOUNT = 4
         const val MOVIE_KEY = "MOVIE_KEY"
 
         fun newInstance(movie: Movie): MovieDetailsFragment {
@@ -86,7 +87,7 @@ class MovieDetailsFragment : Fragment() {
     private fun prepareCast() {
         castAdapter = CastAdapter(movie?.actorList ?: listOf())
         binding.movieActors.apply {
-            layoutManager = GridLayoutManager(context, 4)
+            layoutManager = GridLayoutManager(context, COLUMNS_AMOUNT)
             adapter = castAdapter
             addHorizontalDivider(R.drawable.divider)
         }
