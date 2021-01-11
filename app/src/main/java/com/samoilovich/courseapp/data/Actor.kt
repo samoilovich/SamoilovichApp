@@ -2,16 +2,15 @@ package com.samoilovich.courseapp.data
 
 import android.os.Parcelable
 import androidx.annotation.Keep
+import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
 @Keep
-@Serializable
+@Parcelize
 class Actor(
-    @SerialName("id") val id: Int,
-    @SerialName("name") val name: String,
-    @SerialName("original_name") val originalName: String,
-    @SerialName("gender") val gender: Int,
-    @SerialName("profile_path") val profilePath: String,
-)
+    @SerializedName("id") val id: Int,
+    @SerializedName("name") val name: String,
+    @SerializedName("original_name") val originalName: String,
+    @SerializedName("gender") val gender: Int,
+    @SerializedName("profile_path") val profilePath: String,
+) : Parcelable

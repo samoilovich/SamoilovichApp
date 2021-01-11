@@ -1,12 +1,13 @@
 package com.samoilovich.courseapp.data
 
+import android.os.Parcelable
 import androidx.annotation.Keep
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 @Keep
-@Serializable
+@Parcelize
 data class Genre(
-    @SerialName("id") var id: Int,
-    @SerialName("name") var name: String
-)
+    @SerializedName("id") var id: Int,
+    @SerializedName("name") var name: String
+) : Parcelable

@@ -66,10 +66,10 @@ class RatingView(context: Context, attrs: AttributeSet) : FrameLayout(context, a
                 view?.setImageResource(R.drawable.ic_star_default)
             }
         }
-        binding.tvRatingReviews.text = if (rating > 1) {
+        binding.tvRatingReviews.text = if (reviews > 1) {
             context.getString(R.string.reviews_placeholder).format(reviews)
         } else {
-            context.getString(R.string.reviews_placeholder).format(reviews)
+            context.getString(R.string.review_placeholder).format(reviews)
         }
     }
 }

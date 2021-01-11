@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -22,8 +23,7 @@ class MovieDetailsFragment : Fragment() {
 
         fun newInstance(movie: Movie): MovieDetailsFragment {
             val fragment = MovieDetailsFragment()
-            val bundle = Bundle()
-            bundle.putParcelable(MOVIE_KEY, movie)
+            val bundle = bundleOf(Pair(MOVIE_KEY, movie))
             fragment.arguments = bundle
             return fragment
         }
@@ -32,7 +32,7 @@ class MovieDetailsFragment : Fragment() {
     private lateinit var binding: FragmentMoviesDetailsBinding
     private val viewModel: MoviesDetailsViewModel by viewModels()
     private var castAdapter: CastAdapter? = null
-    private var movie: Movie? = null
+    private val movie: Movie? by lazy { arguments?.getParcelable(MOVIE_KEY) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,7 +50,6 @@ class MovieDetailsFragment : Fragment() {
     }
 
     private fun initVariables() {
-        movie = arguments?.getParcelable(MOVIE_KEY)
         viewModel.actorsLiveData.observe(viewLifecycleOwner) { actors ->
             movie?.actorList = actors
             castAdapter?.updateActors(actors)

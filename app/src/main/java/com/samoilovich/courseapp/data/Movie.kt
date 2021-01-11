@@ -1,35 +1,36 @@
 package com.samoilovich.courseapp.data
 
 import android.content.Context
+import android.os.Parcelable
 import androidx.annotation.Keep
+import com.google.gson.annotations.SerializedName
 import com.samoilovich.courseapp.R
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.android.parcel.Parcelize
 
 @Keep
-@Serializable
+@Parcelize
 data class Movie(
-    @SerialName("popularity") var popularity: Float,
-    @SerialName("vote_count") var voteCount: Int,
-    @SerialName("video") var video: Boolean,
-    @SerialName("poster_path") var posterPath: String,
-    @SerialName("id") var id: String,
-    @SerialName("adult") var adult: Boolean,
-    @SerialName("backdrop_path") var backdropPath: String,
-    @SerialName("original_language") var originalLanguage: String,
-    @SerialName("original_title") var originalTitle: String,
-    @SerialName("runtime") var runtime: Int,
-    @SerialName("genre_ids") var genreIds: List<Int>,
-    @SerialName("title") var title: String,
-    @SerialName("actors") var actorIds: List<Int>,
-    @SerialName("vote_average") var voteAverage: Float,
-    @SerialName("overview") var overview: String,
-    @SerialName("release_date") var releaseDate: String,
+    @SerializedName("popularity") var popularity: Float,
+    @SerializedName("vote_count") var voteCount: Int,
+    @SerializedName("video") var video: Boolean,
+    @SerializedName("poster_path") var posterPath: String,
+    @SerializedName("id") var id: String,
+    @SerializedName("adult") var adult: Boolean,
+    @SerializedName("backdrop_path") var backdropPath: String,
+    @SerializedName("original_language") var originalLanguage: String,
+    @SerializedName("original_title") var originalTitle: String,
+    @SerializedName("runtime") var runtime: Int,
+    @SerializedName("genre_ids") var genreIds: List<Int>,
+    @SerializedName("title") var title: String,
+    @SerializedName("actors") var actorIds: List<Int>,
+    @SerializedName("vote_average") var voteAverage: Float,
+    @SerializedName("overview") var overview: String,
+    @SerializedName("release_date") var releaseDate: String,
 
     var isFavorite: Boolean = false,
     var genres: List<Genre> = listOf(),
     var actorList: List<Actor> = listOf()
-) {
+) : Parcelable {
 
     fun getAgeLimit(context: Context): String {
         return if (adult) {
