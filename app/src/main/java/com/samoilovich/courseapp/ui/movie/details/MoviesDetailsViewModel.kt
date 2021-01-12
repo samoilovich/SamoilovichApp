@@ -11,10 +11,8 @@ import kotlinx.coroutines.launch
 
 class MoviesDetailsViewModel : ViewModel() {
 
-    private val _actorsLiveData: MutableLiveData<MutableList<Actor>> by lazy {
-        MutableLiveData<MutableList<Actor>>()
-    }
-    val actorsLiveData: LiveData<MutableList<Actor>> = _actorsLiveData
+    private val _actorsLiveData: MutableLiveData<List<Actor>> by lazy { MutableLiveData<List<Actor>>() }
+    val actorsLiveData: LiveData<List<Actor>> = _actorsLiveData
     private val gson = Gson()
 
     fun getMovieActors(assets: AssetManager?, actorIds: List<Int>?) {

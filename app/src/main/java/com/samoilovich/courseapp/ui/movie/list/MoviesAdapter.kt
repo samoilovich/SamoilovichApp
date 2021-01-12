@@ -28,11 +28,8 @@ class MoviesAdapter(
             binding.rvMovieRating.setRatingAndReviews(movie.getRating(), movie.voteCount)
             binding.tvMovieDuration.text =
                 binding.root.context.getString(R.string.duration_placeholder).format(movie.runtime)
-            if (movie.isFavorite) {
-                binding.ivMovieLike.setImageResource(R.drawable.ic_liked)
-            } else {
-                binding.ivMovieLike.setImageResource(R.drawable.ic_like)
-            }
+            val drawableResId = if (movie.isFavorite) R.drawable.ic_liked else R.drawable.ic_like
+            binding.ivMovieLike.setImageResource(drawableResId)
             binding.root.setOnClickListener {
                 onMovieClickListener?.onMovieClick(movie)
             }

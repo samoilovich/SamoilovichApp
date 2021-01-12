@@ -43,13 +43,13 @@ data class Movie(
     fun getRating(): Int = (voteAverage / 2).toInt()
 
     fun getGenreNames(): String {
-        val nameBuilder = StringBuilder()
-        if (genres.size > 1) {
-            for (index in 0..genres.size - 2) {
-                nameBuilder.append(genres[index].name).append(", ")
+        return buildString {
+            if (genres.size > 1) {
+                for (index in 0..genres.size - 2) {
+                    append(genres[index].name).append(", ")
+                }
             }
+            append(genres.last().name)
         }
-        nameBuilder.append(genres.last().name)
-        return nameBuilder.toString()
     }
 }
