@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">CourseApplication</string>
+
+    <!-- Movies list screen -->
+    <string name="movies_list">Movies list</string>
+
+    <!-- Movie details screen -->
+    <string name="back">Back</string>
+    <string name="avengers">Avengers:\nEnd Game</string>
+    <string name="tags">Action, Adventure, Fantasy</string>
+    <string name="age">13+</string>
+    <string name="reviews">125 Reviews</string>
+    <string name="storyline">Storyline</string>
+    <string name="cast">Cast</string>
+    <string name="actor_name_placeholder">%s\n%s</string>
+
+    <string name="review_placeholder">%d review</string>
+    <string name="reviews_placeholder">%d reviews</string>
+    <string name="duration_placeholder">%d min</string>
+
+    <string name="adult_age_limit">18+</string>
+    <string name="no_age_limit">0+</string>
 </resources>
