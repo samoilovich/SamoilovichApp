@@ -1,6 +1,7 @@
 package com.samoilovich.courseapp.ui.movie.details
 
 import android.content.res.AssetManager
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,9 +11,10 @@ import kotlinx.coroutines.launch
 
 class MoviesDetailsViewModel : ViewModel() {
 
-    val actorsLiveData: MutableLiveData<MutableList<Actor>> by lazy {
+    private val _actorsLiveData: MutableLiveData<MutableList<Actor>> by lazy {
         MutableLiveData<MutableList<Actor>>()
     }
+    val actorsLiveData: LiveData<MutableList<Actor>> = _actorsLiveData
     private val gson = Gson()
 
     fun getMovieActors(assets: AssetManager?, actorIds: List<Int>?) {
@@ -27,7 +29,7 @@ class MoviesDetailsViewModel : ViewModel() {
                     val foundActors = actors.filter { actor -> actor.id == actorId }
                     movieActors.addAll(foundActors)
                 }
-                actorsLiveData.value = movieActors
+                _actorsLiveData.value = movieActors
             }
         }
     }

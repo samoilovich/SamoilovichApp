@@ -1,6 +1,7 @@
 package com.samoilovich.courseapp.ui.movie.list
 
 import android.content.res.AssetManager
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,7 +12,8 @@ import kotlinx.coroutines.launch
 
 class MoviesViewModel : ViewModel() {
 
-    val moviesLiveData: MutableLiveData<MutableList<Movie>> by lazy { MutableLiveData<MutableList<Movie>>() }
+    private val _moviesLiveData: MutableLiveData<MutableList<Movie>> by lazy { MutableLiveData<MutableList<Movie>>() }
+    val moviesLiveData: LiveData<MutableList<Movie>> = _moviesLiveData
     private val gson = Gson()
 
     fun getMovies(assets: AssetManager?) {
@@ -20,24 +22,28 @@ class MoviesViewModel : ViewModel() {
             var moviesStr = reader?.use { it.readText() }
             moviesStr = moviesStr?.replace("\r\n", "")
             val movies = gson.fromJson(moviesStr, Array<Movie>::class.java).toMutableList()
-            val genres = getGenres(assets)
+            val genresMap = getGenres(assets)
             for (movie in movies) {
                 val movieGenres = mutableListOf<Genre>()
                 for (genreId in movie.genreIds) {
-                    val foundGenres = genres.filter { genre -> genre.id == genreId }
-                    movieGenres.addAll(foundGenres)
+                    genresMap[genreId]?.let { genre -> movieGenres.add(genre) }
                 }
                 movie.genres = movieGenres
             }
-            moviesLiveData.value = movies
+            _moviesLiveData.value = movies
         }
     }
 
-    private fun getGenres(assets: AssetManager?): MutableList<Genre> {
+    private fun getGenres(assets: AssetManager?): Map<Int, Genre> {
         val genresStr =
             assets?.open("genres.json", AssetManager.ACCESS_STREAMING)?.bufferedReader()?.use {
                 it.readText()
             }
-        return gson.fromJson(genresStr, Array<Genre>::class.java).toMutableList()
+        val genres = gson.fromJson(genresStr, Array<Genre>::class.java).toMutableList()
+        val genresMap = hashMapOf<Int, Genre>()
+        for (genre in genres) {
+            genresMap[genre.id] = genre
+        }
+        return genresMap
     }
 }
