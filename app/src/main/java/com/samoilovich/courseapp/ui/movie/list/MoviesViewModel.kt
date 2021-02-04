@@ -8,29 +8,30 @@ import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.samoilovich.courseapp.data.Genre
 import com.samoilovich.courseapp.data.Movie
+import com.samoilovich.courseapp.repo.ApiService
 import kotlinx.coroutines.launch
 
 class MoviesViewModel : ViewModel() {
 
-    private val _moviesLiveData: MutableLiveData<List<Movie>> by lazy { MutableLiveData<List<Movie>>() }
-    val moviesLiveData: LiveData<List<Movie>> = _moviesLiveData
+    private val service = ApiService()
+    private val _moviesLiveData: MutableLiveData<List<Movie?>> by lazy { MutableLiveData<List<Movie?>>() }
+    val moviesLiveData: LiveData<List<Movie?>> = _moviesLiveData
     private val gson = Gson()
 
     fun getMovies(assets: AssetManager?) {
-        val reader = assets?.open("data.json", AssetManager.ACCESS_STREAMING)?.bufferedReader()
         viewModelScope.launch {
-            var moviesStr = reader?.use { it.readText() }
-            moviesStr = moviesStr?.replace("\r\n", "")
-            val movies = gson.fromJson(moviesStr, Array<Movie>::class.java).toMutableList()
-            val genresMap = getGenres(assets)
-            for (movie in movies) {
-                val movieGenres = mutableListOf<Genre>()
-                for (genreId in movie.genreIds) {
-                    genresMap[genreId]?.let { genre -> movieGenres.add(genre) }
+            val configuration = service.getConfiguration()
+            val response = service.getMoviesPopular()
+            response.movies?.let { movies ->
+                val posterSize = configuration.images?.posterSizes?.get(2)
+                val moviePosterUrl = "${configuration.images?.secureBaseUrl}/$posterSize"
+                if (movies.isNotEmpty()) {
+                    for (movie in movies) {
+                        movie?.posterPath = "$moviePosterUrl/${movie?.posterPath}"
+                    }
                 }
-                movie.genres = movieGenres
+                _moviesLiveData.value = response.movies
             }
-            _moviesLiveData.value = movies
         }
     }
 

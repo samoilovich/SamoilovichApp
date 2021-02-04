@@ -28,7 +28,7 @@ data class Movie(
     @SerializedName("release_date") var releaseDate: String,
 
     var isFavorite: Boolean = false,
-    var genres: List<Genre> = listOf(),
+    var genres: List<Genre>? = listOf(),
     var actorList: List<Actor> = listOf()
 ) : Parcelable {
 
@@ -43,13 +43,16 @@ data class Movie(
     fun getRating(): Int = (voteAverage / 2).toInt()
 
     fun getGenreNames(): String {
-        return buildString {
-            if (genres.size > 1) {
-                for (index in 0..genres.size - 2) {
-                    append(genres[index].name).append(", ")
+        genres?.let { genres ->
+            return buildString {
+                if (genres.size > 1) {
+                    for (index in 0..genres.size - 2) {
+                        append(genres[index].name).append(", ")
+                    }
                 }
+                append(genres.last().name)
             }
-            append(genres.last().name)
         }
+        return ""
     }
 }
