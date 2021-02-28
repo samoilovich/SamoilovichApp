@@ -1,7 +1,8 @@
 package com.samoilovich.courseapp.repo
 
-import com.samoilovich.courseapp.data.Configuration
-import com.samoilovich.courseapp.data.MoviesPopular
+import com.samoilovich.courseapp.repo.model.ConfigurationResponse
+import com.samoilovich.courseapp.repo.model.GenresResponse
+import com.samoilovich.courseapp.repo.model.MoviesPopularResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -12,8 +13,14 @@ interface TheMovieDbService {
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
         @Query("page") page: Int
-    ): MoviesPopular
+    ): MoviesPopularResponse
 
     @GET("configuration")
-    suspend fun getConfiguration(@Query("api_key") apiKey: String): Configuration
+    suspend fun getConfiguration(@Query("api_key") apiKey: String): ConfigurationResponse
+
+    @GET("genre/movie/list")
+    suspend fun getGenres(
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String,
+    ): GenresResponse
 }

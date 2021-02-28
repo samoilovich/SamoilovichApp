@@ -1,8 +1,10 @@
-package com.samoilovich.courseapp.data
+package com.samoilovich.courseapp.repo.model
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
-data class Images(
+@Keep
+data class ImagesResponse(
 
     @SerializedName("poster_sizes")
     val posterSizes: List<String?>? = null,

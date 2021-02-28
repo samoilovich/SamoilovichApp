@@ -1,5 +1,6 @@
 package com.samoilovich.courseapp.ui.movie.list
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +22,11 @@ class MoviesLisFragment : Fragment() {
     private lateinit var binding: FragmentMoviesListBinding
     private val viewModel: MoviesViewModel by viewModels()
     private var moviesAdapter: MoviesAdapter? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        viewModel.getMovies()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,6 +60,5 @@ class MoviesLisFragment : Fragment() {
         viewModel.moviesLiveData.observe(viewLifecycleOwner) { movies ->
             moviesAdapter?.submitList(movies)
         }
-        viewModel.getMovies(context?.assets)
     }
 }
